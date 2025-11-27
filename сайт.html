@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPC - Магазин твоего будущего</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="bg-video"></div>
+
+    <nav class="navbar">
+        <div class="logo">CYBER<span>PC</span></div>
+        <ul class="menu">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#shop">Каталог</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+        <div class="cart" onclick="openCartModal()">
+            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div class="container" id="home">
+        <header>
+            <h1>Собери свою мечту</h1>
+            <p>Лучшее железо в городе. Топовые сборки. Гарантия.</p>
+        </header>
+        <div class="controls">
+            <div class="control-group">
+                <h3>Vibe (Настроение):</h3>
+                <button onclick="setMood('energetic')">🔥 Драйв</button>
+                <button onclick="setMood('calm')">🌊 Релакс</button>
+                <button onclick="setMood('moderate')">⚖️ Офис</button>
+            </div>
+            <div class="control-group">
+                <h3>Стиль:</h3>
+                <button onclick="toggleTheme()">🌗 Сменить тему</button>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="shop">Каталог товаров</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProducts('all')">Все товары</button>
+            <button class="filter-btn" onclick="filterProducts('gpu')">Видеокарты (GPU)</button>
+            <button class="filter-btn" onclick="filterProducts('cpu')">Процессоры (CPU)</button>
+            <button class="filter-btn" onclick="filterProducts('case')">Корпуса</button>
+        </div>
+        
+        <div class="products" id="products-container">
+            </div>
+
+        <div class="contact-section" id="contacts">
+            <h2>Заказать сборку ПК</h2>
+            <form id="orderForm" onsubmit="submitForm(event)">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <select>
+                    <option>Игровой ПК</option>
+                    <option>Для работы / Учебы</option>
+                    <option>Сервер</option>
+                </select>
+                <button type="submit">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 CyberPC Shop. Сделано для зачета.</p>
+    </footer>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeCartModal()">&times;</span>
+            <h2>Ваша Корзина</h2>
+            <div id="cart-items-list">
+                </div>
+            <div id="cart-total"></div>
+            <button class="checkout-btn" onclick="goToCheckout()">Оформить заказ</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
